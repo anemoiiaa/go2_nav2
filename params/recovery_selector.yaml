@@ -1,0 +1,25 @@
+
+recovery_selector:
+  ros__parameters:
+    use_sim_time: true
+
+    behavior_plugins: ["backup_recovery", "rotate_recovery", "clear_costmap_recovery"]
+
+    # 후진해서 빠져나오기
+    backup_recovery:
+      plugin: "nav2_recoveries/BackUp"
+      time_allowance: 4.0                       # 최대 후진 시간
+      backup_dist: 0.5                          # 최대 후진 거리 (m)
+
+    # 회전해서 방향 전환
+    rotate_recovery:
+      plugin: "nav2_recoveries/Rotate"
+      time_allowance: 5.0                       # 최대 회전 시간
+      max_rotational_vel: 0.5                   # 최대 회전 속도
+      min_rotational_vel: 0.2                   # 최소 회전 속도
+
+    # 비용맵 초기화 (동적 장애물 대응용)
+    clear_costmap_recovery:
+      plugin: "nav2_recoveries/ClearCostmap"
+      time_allowance: 3.0
+      force_update: true                        # 강제 업데이트 여부

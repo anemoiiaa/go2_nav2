@@ -1,0 +1,19 @@
+goal_checker_selector:
+  ros__parameters:
+    use_sim_time: true
+
+    goal_checker_plugins: 
+      - general_goal_checker
+      - precise_goal_checker
+
+    general_goal_checker:
+      plugin: "nav2_controller::SimpleGoalChecker"
+      stateful: true
+      xy_goal_tolerance: 0.25
+      yaw_goal_tolerance: 0.25
+
+    precise_goal_checker:
+      plugin: "nav2_controller::SimpleGoalChecker"
+      stateful: true
+      xy_goal_tolerance: 0.05
+      yaw_goal_tolerance: 0.05
