@@ -7,9 +7,9 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 
-# launch, param, map 디렉토리 포함 설치
+# launch, param, config 디렉토리 포함 설치
 install(
-  DIRECTORY launch params map
+  DIRECTORY launch params config
   DESTINATION share/${PROJECT_NAME}/
 )
 
